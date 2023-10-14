@@ -20,3 +20,12 @@
   },
   "exclude": ["dist", "node_modules"]
 }
+ provider = new AlchemyProvider(providerConfig).connect(
+  (rpcClient) =>
+    new LightSmartContractAccount({
+      ...accountConfig,
+      rpcClient,
+    })
+);
+
+const { hash } = await provider.sendUserOperation(uo);
